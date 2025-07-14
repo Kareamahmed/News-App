@@ -18,7 +18,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.newsapp.R
-import com.example.newsapp.presentation.Dimens.MediumPadding
+import com.example.newsapp.presentation.Dimens.MediumPadding1
+import com.example.newsapp.presentation.Dimens.MediumPadding2
 import com.example.newsapp.presentation.onbording.Page
 import com.example.newsapp.presentation.onbording.listOfPages
 import com.example.newsapp.ui.theme.NewsAppTheme
@@ -35,16 +36,16 @@ fun OnBoardingPage(
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
-        Spacer(Modifier.height(MediumPadding))
+        Spacer(Modifier.height(MediumPadding1))
         Text(
-            modifier = Modifier.padding(horizontal = MediumPadding),
+            modifier = Modifier.padding(horizontal = MediumPadding2),
             text = page.title,
            style = MaterialTheme.typography.displaySmall.copy(fontWeight = FontWeight.Bold),
             color = colorResource(R.color.display_small)
         )
 
         Text(
-            modifier = Modifier.padding(horizontal = MediumPadding),
+            modifier = Modifier.padding(horizontal = MediumPadding2),
             text = page.description,
             style = MaterialTheme.typography.bodyMedium,
             color = colorResource(R.color.text_medium)

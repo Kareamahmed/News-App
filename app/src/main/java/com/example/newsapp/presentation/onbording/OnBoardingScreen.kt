@@ -19,7 +19,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.newsapp.presentation.Dimens.MediumPadding
+import com.example.newsapp.presentation.Dimens.MediumPadding1
 import com.example.newsapp.presentation.common.NewsButton
 import com.example.newsapp.presentation.common.NewsTextButton
 import com.example.newsapp.presentation.onbording.components.OnBoardingPage
@@ -40,7 +40,7 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
             }
         }
     }
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = modifier.fillMaxSize()) {
         HorizontalPager(state = pagerState) { index ->
             OnBoardingPage(page = listOfPages[index])
         }
@@ -48,7 +48,7 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = MediumPadding)
+                .padding(horizontal = MediumPadding1)
                 .navigationBarsPadding(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
