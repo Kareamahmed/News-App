@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 
 
 @Composable
-fun OnBoardingScreen(modifier: Modifier = Modifier) {
+fun OnBoardingScreen(modifier: Modifier = Modifier, event: (OnBoardingEvent) -> Unit) {
     val vm: OnBoardingViewModel = hiltViewModel()
     val pagerState = rememberPagerState(pageCount = { listOfPages.size })
     val buttonState = remember {
@@ -71,8 +71,7 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
                 NewsButton(text = buttonState.value[1]) {
                     scope.launch {
                         if (pagerState.currentPage == 2) {
-                            vm.onEvent(OnBoardingEvent.SaveAppEntry)
-                            // navigate to home
+                            event(OnBoardingEvent.SaveAppEntry)
                         } else
                             pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
                     }
