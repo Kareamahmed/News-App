@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -61,4 +63,8 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.0")
     //data store
     implementation ("androidx.datastore:datastore-preferences:1.1.1")
+    // hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    ksp("com.google.dagger:hilt-compiler:2.51.1")
+    implementation(libs.hilt.navigation.compose)
 }
