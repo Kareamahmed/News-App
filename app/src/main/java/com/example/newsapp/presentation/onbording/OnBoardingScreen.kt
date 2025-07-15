@@ -1,6 +1,5 @@
 package com.example.newsapp.presentation.onbording
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,6 +18,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.newsapp.presentation.Dimens.MediumPadding1
 import com.example.newsapp.presentation.common.NewsButton
 import com.example.newsapp.presentation.common.NewsTextButton
@@ -26,9 +26,10 @@ import com.example.newsapp.presentation.onbording.components.OnBoardingPage
 import com.example.newsapp.presentation.onbording.components.PageIndicator
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
+
 @Composable
 fun OnBoardingScreen(modifier: Modifier = Modifier) {
+    val vm: OnBoardingViewModel = hiltViewModel()
     val pagerState = rememberPagerState(pageCount = { listOfPages.size })
     val buttonState = remember {
         derivedStateOf {
@@ -70,6 +71,7 @@ fun OnBoardingScreen(modifier: Modifier = Modifier) {
                 NewsButton(text = buttonState.value[1]) {
                     scope.launch {
                         if (pagerState.currentPage == 2) {
+                            vm.onEvent(OnBoardingEvent.SaveAppEntry)
                             // navigate to home
                         } else
                             pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
