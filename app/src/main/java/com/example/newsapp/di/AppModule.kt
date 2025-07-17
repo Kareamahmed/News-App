@@ -1,11 +1,11 @@
 package com.example.newsapp.di
 
 import android.content.Context
-import com.example.newsapp.data.datastore.LocalUserMangerImpl
+import com.example.newsapp.data.local.datastore.LocalUserMangerImpl
 import com.example.newsapp.domain.manger.LocalUserManger
-import com.example.newsapp.domain.usecase.LocalUserMangerUseCase
-import com.example.newsapp.domain.usecase.ReadOnBoardingStateUseCase
-import com.example.newsapp.domain.usecase.SaveOnBoardingStateUseCase
+import com.example.newsapp.domain.usecase.appentry.LocalUserMangerUseCase
+import com.example.newsapp.domain.usecase.appentry.ReadOnBoardingStateUseCase
+import com.example.newsapp.domain.usecase.appentry.SaveOnBoardingStateUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

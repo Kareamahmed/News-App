@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.newsapp.domain.usecase.LocalUserMangerUseCase
+import com.example.newsapp.domain.usecase.appentry.LocalUserMangerUseCase
 import com.example.newsapp.presentation.navigation.Routes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -24,10 +24,10 @@ class MainViewModel @Inject constructor(
 
     init {
         localUserMangerUseCase.readOnBoardingStateUseCase().onEach { isTrue ->
-            if (isTrue)
-                startDestination = Routes.NewsNavigation.route
+            startDestination = if (isTrue)
+                Routes.NewsNavigation.route
             else
-                startDestination = Routes.AppStartNavigation.route
+                Routes.AppStartNavigation.route
 
             delay(timeMillis = 300)
             splashCondition = false

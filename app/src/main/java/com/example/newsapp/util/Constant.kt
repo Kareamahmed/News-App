@@ -1,6 +1,9 @@
 package com.example.newsapp.util
 
+import com.example.newsapp.BuildConfig
+
 object Constant {
     const val USER_SETTING = "userSetting"
     const val APP_ENTRY = "appEntry"
+    const val  API_KEY = BuildConfig.API_KEY
 }
