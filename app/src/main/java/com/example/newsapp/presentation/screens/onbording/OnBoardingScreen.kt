@@ -1,4 +1,4 @@
-package com.example.newsapp.presentation.onbording
+package com.example.newsapp.presentation.screens.onbording
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,11 +19,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.newsapp.presentation.Dimens.MediumPadding1
-import com.example.newsapp.presentation.common.NewsButton
-import com.example.newsapp.presentation.common.NewsTextButton
-import com.example.newsapp.presentation.onbording.components.OnBoardingPage
-import com.example.newsapp.presentation.onbording.components.PageIndicator
+import com.example.newsapp.presentation.screens.Dimens.MediumPadding1
+import com.example.newsapp.presentation.screens.common.NewsButton
+import com.example.newsapp.presentation.screens.common.NewsTextButton
+import com.example.newsapp.presentation.screens.onbording.components.OnBoardingPage
+import com.example.newsapp.presentation.screens.onbording.components.PageIndicator
+import com.example.newsapp.presentation.screens.onbording.viewmodel.OnBoardingViewModel
 import kotlinx.coroutines.launch
 
 

@@ -1,4 +1,4 @@
-package com.example.newsapp.presentation.onbording.components
+package com.example.newsapp.presentation.screens.onbording.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
@@ -18,10 +18,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.newsapp.R
-import com.example.newsapp.presentation.Dimens.MediumPadding1
-import com.example.newsapp.presentation.Dimens.MediumPadding2
-import com.example.newsapp.presentation.onbording.Page
-import com.example.newsapp.presentation.onbording.listOfPages
+import com.example.newsapp.presentation.screens.Dimens.MediumPadding1
+import com.example.newsapp.presentation.screens.Dimens.MediumPadding2
+import com.example.newsapp.presentation.screens.onbording.Page
+import com.example.newsapp.presentation.screens.onbording.listOfPages
 import com.example.newsapp.ui.theme.NewsAppTheme
 
 @Composable

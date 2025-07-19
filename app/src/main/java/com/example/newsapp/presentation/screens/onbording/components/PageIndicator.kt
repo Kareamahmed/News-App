@@ -1,4 +1,4 @@
-package com.example.newsapp.presentation.onbording.components
+package com.example.newsapp.presentation.screens.onbording.components
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background

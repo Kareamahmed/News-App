@@ -7,8 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.example.newsapp.presentation.onbording.OnBoardingScreen
-import com.example.newsapp.presentation.onbording.OnBoardingViewModel
+import com.example.newsapp.presentation.screens.onbording.OnBoardingScreen
+import com.example.newsapp.presentation.screens.onbording.viewmodel.OnBoardingViewModel
 
 @Composable
 fun NavGraph(startDestination: String) {

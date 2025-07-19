@@ -1,8 +1,9 @@
-package com.example.newsapp.presentation.onbording
+package com.example.newsapp.presentation.screens.onbording.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsapp.domain.usecase.appentry.LocalUserMangerUseCase
+import com.example.newsapp.presentation.screens.onbording.OnBoardingEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

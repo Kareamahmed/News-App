@@ -1,4 +1,4 @@
-package com.example.newsapp.presentation.onbording
+package com.example.newsapp.presentation.screens.onbording
 
 import androidx.annotation.DrawableRes
 import com.example.newsapp.R

@@ -8,8 +8,9 @@ import com.example.newsapp.data.remote.api.NewsApiServer
 import com.example.newsapp.data.remote.model.news.Article
 import com.example.newsapp.domain.repository.NewsRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class NewsRepositoryImpl(
+class NewsRepositoryImpl @Inject constructor(
     private val newsApi: NewsApiServer,
 ) : NewsRepository {
 
