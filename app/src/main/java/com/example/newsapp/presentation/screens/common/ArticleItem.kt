@@ -1,6 +1,7 @@
 package com.example.newsapp.presentation.screens.common
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,13 +20,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import coil.compose.AsyncImage
+import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.newsapp.R
 import com.example.newsapp.data.remote.model.news.Article
@@ -45,10 +48,14 @@ fun ArticleItem(
     Row(modifier = modifier
         .fillMaxWidth()
         .clickable { onClick() }) {
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(article.urlToImage)
-                .build(),
+        Image(
+            painter = rememberAsyncImagePainter(
+                ImageRequest.Builder(LocalContext.current)
+                    .data(article.urlToImage)
+                    .crossfade(1000)
+                    .build()
+            ),
+            contentScale = ContentScale.Crop,
             contentDescription = "article image",
             modifier = Modifier
                 .padding(ArticleImagePadding)
@@ -86,11 +93,18 @@ fun ArticleItem(
                         id = R.color.body
                     )
                 )
-                Row(verticalAlignment = Alignment.CenterVertically) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.padding(
+                        SmallPadding
+                    )
+                ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_time),
                         contentDescription = null,
-                        modifier = Modifier.size(SmallIconSize),
+                        modifier = Modifier
+                            .size(SmallIconSize)
+                            .padding(end = SmallPadding),
                         tint = colorResource(id = R.color.body)
                     )
                     Text(
@@ -108,6 +122,7 @@ fun ArticleItem(
         }
 
     }
+    HorizontalDivider()
 }
 
 @Preview(showBackground = true)

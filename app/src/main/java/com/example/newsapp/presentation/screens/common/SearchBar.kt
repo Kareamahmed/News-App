@@ -31,7 +31,9 @@ import com.example.newsapp.ui.theme.NewsAppTheme
 
 @Composable
 fun SearchBar(
-    onClick: (() -> Unit)? = null,
+    modifier: Modifier = Modifier,
+    onClick: (()
+    -> Unit)? = null,
     onSearch: () -> Unit,
     text: String,
     onValueChange: (String) -> Unit,
@@ -48,7 +50,7 @@ fun SearchBar(
     }
     Box {
         TextField(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .searchBarBorder(),
             value = text,
@@ -119,6 +121,6 @@ fun Modifier.searchBarBorder() = composed {
 @Composable
 private fun Test() {
     NewsAppTheme {
-        SearchBar({},{},"",{},false)
+//        SearchBar({}, {}, "", {}, false)
     }
 }
