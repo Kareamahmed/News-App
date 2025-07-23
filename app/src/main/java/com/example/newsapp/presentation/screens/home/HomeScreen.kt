@@ -24,7 +24,10 @@ import com.example.newsapp.ui.theme.NewsAppTheme
 
 
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(
+    modifier: Modifier = Modifier,
+    onSearchClick: () -> Unit,
+) {
     val vm: HomeViewModel = hiltViewModel()
     val news = vm.news.collectAsLazyPagingItems()
     Column(
@@ -42,16 +45,16 @@ fun HomeScreen(modifier: Modifier = Modifier) {
         SearchBar(
             modifier = Modifier.padding(horizontal = MediumPadding1),
             onClick = {
-
+                onSearchClick()
             },
             onSearch = { },
             text = "",
             onValueChange = {},
-            readOnly = false
+            readOnly = true
         )
         Spacer(modifier = Modifier.padding(top = SmallPadding))
 
-        ArticleList(articles = news) {
+        ArticleList(modifier = Modifier.padding(horizontal = MediumPadding1), articles = news) {
 
         }
 
@@ -62,6 +65,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 @Composable
 private fun HomeScreenPreview() {
     NewsAppTheme {
-        HomeScreen()
+        HomeScreen {}
     }
 }

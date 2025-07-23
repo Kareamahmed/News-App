@@ -7,7 +7,7 @@ object Dimens {
     val MediumPadding2 = 30.dp
     val ArticleImageSize = 96.dp
     val SmallPadding = 3.dp
-    val SmallIconSize = 10.dp
+    val SmallIconSize = 15.dp
     val ArticleImagePadding = 5.dp
     val IconSize =20.dp
     val LogoSize = 100.dp

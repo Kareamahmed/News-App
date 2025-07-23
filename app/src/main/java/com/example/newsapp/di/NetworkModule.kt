@@ -1,6 +1,7 @@
 package com.example.newsapp.di
 
 import com.example.newsapp.data.remote.api.NewsApiServer
+import com.example.newsapp.data.remote.api.NewsSearchApiServer
 import com.example.newsapp.util.Constant.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -26,5 +27,11 @@ object NetworkModule {
     @Singleton
     fun getNewsApiServer(retrofit: Retrofit): NewsApiServer {
         return retrofit.create(NewsApiServer::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun getNewsSearchApiServer(retrofit: Retrofit): NewsSearchApiServer {
+        return retrofit.create(NewsSearchApiServer::class.java)
     }
 }

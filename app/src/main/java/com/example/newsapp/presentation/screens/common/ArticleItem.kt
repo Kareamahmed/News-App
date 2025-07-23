@@ -27,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.newsapp.R
@@ -85,6 +86,7 @@ fun ArticleItem(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
+                    modifier = Modifier.padding(end = 7.dp),
                     text = article.source.name,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
@@ -95,9 +97,6 @@ fun ArticleItem(
                 )
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(
-                        SmallPadding
-                    )
                 ) {
                     Icon(
                         painter = painterResource(R.drawable.ic_time),
@@ -109,7 +108,7 @@ fun ArticleItem(
                     )
                     Text(
                         text = article.publishedAt,
-                        maxLines = 2,
+                        maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                         style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
                         color = colorResource(
