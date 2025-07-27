@@ -84,4 +84,10 @@ dependencies {
     val paging_version = "3.1.1"
     implementation ("androidx.paging:paging-runtime:$paging_version")
     implementation ("androidx.paging:paging-compose:3.2.0-rc01")
+
+    // room
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation ("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:$room_version")
 }
