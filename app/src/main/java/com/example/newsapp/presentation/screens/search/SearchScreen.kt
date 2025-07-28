@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.example.newsapp.data.remote.model.news.Article
 import com.example.newsapp.presentation.screens.Dimens.MediumPadding1
 import com.example.newsapp.presentation.screens.common.ArticleList
 import com.example.newsapp.presentation.screens.common.SearchBar
@@ -21,6 +22,7 @@ import com.example.newsapp.ui.theme.NewsAppTheme
 @Composable
 fun SearchScreen(
     modifier: Modifier = Modifier,
+    navigateToDetail : (Article)->Unit
 ) {
     val vm: SearchViewModel = hiltViewModel()
     val state by vm.state.collectAsStateWithLifecycle()
@@ -44,7 +46,7 @@ fun SearchScreen(
         Spacer(Modifier.height(MediumPadding1))
         state.articles?.let {
             val articles = it.collectAsLazyPagingItems()
-            ArticleList(articles = articles) { }
+            ArticleList(articles = articles) {navigateToDetail(it) }
         }
 
 
@@ -55,6 +57,6 @@ fun SearchScreen(
 @Composable
 private fun SearchScreenPreview() {
     NewsAppTheme {
-        SearchScreen()
+        SearchScreen(){}
     }
 }

@@ -32,4 +32,5 @@ object AppModule {
         readOnBoardingStateUseCase = ReadOnBoardingStateUseCase(localUserManger),
         saveOnBoardingStateUseCase = SaveOnBoardingStateUseCase(localUserManger)
     )
+
 }

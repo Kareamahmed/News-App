@@ -2,6 +2,7 @@ package com.example.newsapp.presentation.screens.detail
 
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -24,6 +25,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.newsapp.R
@@ -31,6 +33,7 @@ import com.example.newsapp.data.remote.model.news.Article
 import com.example.newsapp.data.remote.model.news.Source
 import com.example.newsapp.presentation.screens.Dimens.MediumPadding1
 import com.example.newsapp.presentation.screens.detail.components.TopBar
+import com.example.newsapp.presentation.screens.detail.viewmodel.DetailViewModel
 import com.example.newsapp.ui.theme.NewsAppTheme
 
 @Composable
@@ -39,9 +42,18 @@ fun DetailScreen(
     article: Article,
     navigateUp: () -> Unit,
 ) {
+    val vm: DetailViewModel = hiltViewModel()
+
     val context = LocalContext.current
+    if (vm.sideEffect != null) {
+        Toast.makeText(context, vm.sideEffect, Toast.LENGTH_SHORT).show()
+        vm.onEvent(DetailUiEvent.RemoveSideEffect)
+    }
+
     Scaffold(
-        modifier = Modifier.statusBarsPadding(),
+        modifier = Modifier
+            .fillMaxSize()
+            .statusBarsPadding(),
         topBar = {
             TopBar(
                 navigateUp,
@@ -64,7 +76,7 @@ fun DetailScreen(
                     }
                 },
                 onBookMarkClick = {
-
+                    vm.onEvent(DetailUiEvent.UpsertDeleteArticle(article))
                 },
             )
         }

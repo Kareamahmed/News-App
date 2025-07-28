@@ -43,12 +43,12 @@ import com.example.newsapp.ui.theme.NewsAppTheme
 fun ArticleItem(
     modifier: Modifier = Modifier,
     article: Article,
-    onClick: () -> Unit,
+    onItemClick: (Article) -> Unit,
 ) {
 
     Row(modifier = modifier
         .fillMaxWidth()
-        .clickable { onClick() }) {
+        .clickable { onItemClick(article) }) {
         Image(
             painter = rememberAsyncImagePainter(
                 ImageRequest.Builder(LocalContext.current)

@@ -6,10 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
-import com.example.newsapp.presentation.screens.home.HomeScreen
+import com.example.newsapp.presentation.screens.newsnavigator.NewsNavigator
 import com.example.newsapp.presentation.screens.onbording.OnBoardingScreen
 import com.example.newsapp.presentation.screens.onbording.viewmodel.OnBoardingViewModel
-import com.example.newsapp.presentation.screens.search.SearchScreen
 
 @Composable
 fun NavGraph(startDestination: String) {
@@ -29,12 +28,7 @@ fun NavGraph(startDestination: String) {
             startDestination = Routes.NewsNavigatorScreen.route
         ) {
             composable(route = Routes.NewsNavigatorScreen.route) {
-                HomeScreen {
-                    navController.navigate(route = Routes.SearchScreen.route)
-                }
-            }
-            composable(route =Routes.SearchScreen.route){
-                SearchScreen()
+                NewsNavigator()
             }
         }
     }

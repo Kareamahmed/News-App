@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.newsapp.R
+import com.example.newsapp.data.remote.model.news.Article
 import com.example.newsapp.presentation.screens.Dimens.LogoSize
 import com.example.newsapp.presentation.screens.Dimens.MediumPadding1
 import com.example.newsapp.presentation.screens.Dimens.SmallPadding
@@ -27,6 +28,7 @@ import com.example.newsapp.ui.theme.NewsAppTheme
 fun HomeScreen(
     modifier: Modifier = Modifier,
     onSearchClick: () -> Unit,
+    onItemClick: (Article) -> Unit,
 ) {
     val vm: HomeViewModel = hiltViewModel()
     val news = vm.news.collectAsLazyPagingItems()
@@ -55,7 +57,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.padding(top = SmallPadding))
 
         ArticleList(modifier = Modifier.padding(horizontal = MediumPadding1), articles = news) {
-
+            onItemClick(it)
         }
 
     }
@@ -65,6 +67,6 @@ fun HomeScreen(
 @Composable
 private fun HomeScreenPreview() {
     NewsAppTheme {
-        HomeScreen {}
+        HomeScreen(onItemClick = {}, onSearchClick = {})
     }
 }

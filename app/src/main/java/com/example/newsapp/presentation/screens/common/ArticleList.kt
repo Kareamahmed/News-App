@@ -3,12 +3,33 @@ package com.example.newsapp.presentation.screens.common
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.example.newsapp.data.remote.model.news.Article
 import com.example.newsapp.presentation.screens.Dimens.MediumPadding1
+
+@Composable
+fun ArticleList(
+    modifier: Modifier = Modifier,
+    articles: List<Article>,
+    onItemClick: (Article) -> Unit,
+) {
+    LazyColumn(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.spacedBy(MediumPadding1)
+    ) {
+        items(articles) { article ->
+            ArticleItem(
+                article = article
+            ) {
+                onItemClick(article)
+            }
+        }
+    }
+}
 
 @Composable
 fun ArticleList(
