@@ -11,12 +11,16 @@ import androidx.paging.compose.LazyPagingItems
 import com.example.newsapp.data.remote.model.news.Article
 import com.example.newsapp.presentation.screens.Dimens.MediumPadding1
 
+
 @Composable
 fun ArticleList(
     modifier: Modifier = Modifier,
     articles: List<Article>,
     onItemClick: (Article) -> Unit,
 ) {
+    if (articles.isEmpty())
+        ErrorScreen()
+
     LazyColumn(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(MediumPadding1)
@@ -37,7 +41,8 @@ fun ArticleList(
     articles: LazyPagingItems<Article>,
     onClick: (Article) -> Unit,
 ) {
-    val handlePagingResult = handlePagingResult(articles)
+
+    val handlePagingResult = handlePagingResult (articles)
     if (handlePagingResult) {
         LazyColumn(
             modifier = modifier.fillMaxSize(),
@@ -73,6 +78,11 @@ fun handlePagingResult(
 
         error != null -> {
             ErrorScreen(error)
+            false
+        }
+
+        articles.itemCount == 0 -> {
+            ErrorScreen()
             false
         }
 

@@ -3,10 +3,9 @@ package com.example.newsapp.presentation.screens.newsnavigator
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -24,24 +23,38 @@ import com.example.newsapp.presentation.screens.search.SearchScreen
 fun NewsNavigator() {
     val navController = rememberNavController()
     val backStackEntry = navController.currentBackStackEntryAsState().value
-    var selectedItem by rememberSaveable { mutableIntStateOf(0) }
+    val currentRoute = backStackEntry?.destination?.route
 
-    selectedItem = when (backStackEntry?.destination?.route) {
-        Routes.HomeScreen.route -> 0
-        Routes.SearchScreen.route -> 1
-        Routes.BookmarkScreen.route -> 2
-        else -> 0
+    val selectedItem by remember(currentRoute) {
+        derivedStateOf { //  بدل ما تعيد حساب قيمة معينة كل مرة تتغير فيها أي حاجة، أنت بتحسبها بس لما الـ dependencies بتاعتها تتغير.
+            when (currentRoute) {
+                Routes.HomeScreen.route -> 0
+                Routes.SearchScreen.route -> 1
+                Routes.BookmarkScreen.route -> 2
+                else -> 0
+            }
+        }
     }
+
+    // to hide bottom bar in detail screen
+    val bottomNavRoutes = setOf(
+        Routes.HomeScreen.route,
+        Routes.SearchScreen.route,
+        Routes.BookmarkScreen.route
+    )
+    val showBottomBar = currentRoute in bottomNavRoutes
 
     Scaffold(
         bottomBar = {
-            NewsButtonNavigation(
-                selected = selectedItem,
-            ) { index ->
-                when (index) {
-                    0 -> navigateToTab(navController, Routes.HomeScreen.route)
-                    1 -> navigateToTab(navController, Routes.SearchScreen.route)
-                    2 -> navigateToTab(navController, Routes.BookmarkScreen.route)
+            if (showBottomBar) {
+                NewsButtonNavigation(
+                    selected = selectedItem,
+                ) { index ->
+                    when (index) {
+                        0 -> navigateToTab(navController, Routes.HomeScreen.route)
+                        1 -> navigateToTab(navController, Routes.SearchScreen.route)
+                        2 -> navigateToTab(navController, Routes.BookmarkScreen.route)
+                    }
                 }
             }
         }

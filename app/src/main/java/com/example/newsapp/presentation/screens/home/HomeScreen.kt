@@ -32,6 +32,8 @@ fun HomeScreen(
 ) {
     val vm: HomeViewModel = hiltViewModel()
     val news = vm.news.collectAsLazyPagingItems()
+
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -54,7 +56,7 @@ fun HomeScreen(
             onValueChange = {},
             readOnly = true
         )
-        Spacer(modifier = Modifier.padding(top = SmallPadding))
+        Spacer(modifier = Modifier.padding(bottom = MediumPadding1))
 
         ArticleList(modifier = Modifier.padding(horizontal = MediumPadding1), articles = news) {
             onItemClick(it)

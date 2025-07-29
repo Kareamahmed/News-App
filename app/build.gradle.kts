@@ -74,7 +74,7 @@ dependencies {
 
     implementation("androidx.navigation:navigation-compose:2.9.1")
 
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
+//    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
 
     // retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

@@ -30,7 +30,6 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun OnBoardingScreen(modifier: Modifier = Modifier, event: (OnBoardingEvent) -> Unit) {
-    val vm: OnBoardingViewModel = hiltViewModel()
     val pagerState = rememberPagerState(pageCount = { listOfPages.size })
     val buttonState = remember {
         derivedStateOf {
