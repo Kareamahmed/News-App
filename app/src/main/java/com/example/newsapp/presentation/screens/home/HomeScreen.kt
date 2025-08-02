@@ -37,7 +37,6 @@ fun HomeScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .statusBarsPadding()
     ) {
         Image(
             modifier = Modifier

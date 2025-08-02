@@ -7,6 +7,7 @@ import com.example.newsapp.domain.usecase.NewsSearchApiUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,7 +21,7 @@ class SearchViewModel @Inject constructor(
     fun onEvent(event: SearchEvent) {
         when (event) {
             is SearchEvent.UpdateSearchQuery -> {
-                _state.value = SearchUiState(searchQuery = event.searchQuery)
+                _state.update { it.copy(searchQuery = event.searchQuery) }
             }
 
             is SearchEvent.SearchNews -> {
@@ -34,6 +35,6 @@ class SearchViewModel @Inject constructor(
             search = _state.value.searchQuery,
             sources = listOf("bbc-news", "abc-news", "al-jazeera-english")
         ).cachedIn(viewModelScope)
-        _state.value = SearchUiState(articles = news)
+        _state.update { it.copy(articles = news) }
     }
 }

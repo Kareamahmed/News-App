@@ -52,8 +52,7 @@ fun DetailScreen(
 
     Scaffold(
         modifier = Modifier
-            .fillMaxSize()
-            .statusBarsPadding(),
+            .fillMaxSize(),
         topBar = {
             TopBar(
                 navigateUp,
@@ -85,7 +84,7 @@ fun DetailScreen(
             modifier = modifier
                 .fillMaxSize()
                 .padding(it)
-                .padding(MediumPadding1)
+                .padding(horizontal = MediumPadding1)
                 .verticalScroll(rememberScrollState())
 
         ) {

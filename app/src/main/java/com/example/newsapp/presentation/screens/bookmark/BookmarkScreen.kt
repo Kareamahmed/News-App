@@ -31,7 +31,6 @@ fun BookmarkScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .statusBarsPadding()
             .padding(top = MediumPadding1, start = MediumPadding1, end = MediumPadding1)
     ) {
         Text(

@@ -94,8 +94,11 @@ fun ArticleItemShimmerEffect() {
 }
 
 @Composable
- fun ArticleListShimmerEffect(modifier: Modifier = Modifier) {
-    Column(verticalArrangement = Arrangement.spacedBy(MediumPadding1)) {
+fun ArticleListShimmerEffect() {
+    Column(
+        modifier = Modifier.padding(horizontal = MediumPadding1),
+        verticalArrangement = Arrangement.spacedBy(MediumPadding1)
+    ) {
         repeat(10) {
             ArticleItemShimmerEffect()
         }
